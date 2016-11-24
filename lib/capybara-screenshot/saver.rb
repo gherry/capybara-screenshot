@@ -43,7 +43,7 @@ module Capybara
           end
         end
         @html_saved = true
-        run_callbacks :after_save_html, html_path if html_saved?
+        run_callbacks :after_save_html, html_path, page if html_saved?
       end
 
       def save_screenshot
@@ -55,7 +55,7 @@ module Capybara
           }.call(page.driver, path)
           @screenshot_saved = result != :not_supported
         end
-        run_callbacks :after_save_screenshot, screenshot_path if screenshot_saved?
+        run_callbacks :after_save_screenshot, screenshot_path, page if screenshot_saved?
       end
 
       def html_path
